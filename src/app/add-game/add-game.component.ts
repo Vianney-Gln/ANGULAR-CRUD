@@ -39,7 +39,12 @@ export class AddGameComponent implements OnInit {
 
   //function calling updateGame from service
   updateGame() {
-    console.log('test');
+    this._fireBaseService.updateGameById(
+      this.idParam,
+      this.gameFormGroup.get('title')?.value,
+      this.gameFormGroup.get('urlImage')?.value,
+      this.gameFormGroup.get('description')?.value
+    );
   }
 
   ngOnInit(): void {
