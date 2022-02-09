@@ -1,3 +1,7 @@
-<ul *ngFor="let item of listGames |async">
-  <li>{{item.data["title"]}}</li>
-</ul>
+<div class="container-list">
+  <ul class="card" *ngFor="let item of listGames |async">
+    <li class="li-title">{{item.data["title"]}}</li>
+    <li class="li-image"><img [src]="item.data['urlImage']"></li>
+    <li class="li-button"><button type="button">Détails</button></li>
+  </ul>
+</div>

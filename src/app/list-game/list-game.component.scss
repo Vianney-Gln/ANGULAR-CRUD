@@ -1,3 +1,55 @@
-* {
-  color: white;
+.container-list {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 5px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    .li-title {
+      height: 40px;
+      width: 100%;
+      display: flex;
+      color: white;
+      background-color: black;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .li-image {
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .li-button {
+      height: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        padding: 5px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        color: lightgreen;
+      }
+    }
+  }
 }
