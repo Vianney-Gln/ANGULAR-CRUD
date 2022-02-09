@@ -24,10 +24,15 @@ export class GameDetailComponent implements OnInit {
     this._firebaseService.getGameById(this.paramId);
 
   //function calling deleteGameByid(id) from service and redirect home
-  deleteGameById() {
+  deleteGameById(): void {
     this._firebaseService
       .deleteGameById(this.paramId)
       .then(() => this._router.navigate(['']));
+  }
+
+  //function redirecting on form of addGameComponent onClick on "modifier" button
+  public redirectUpdateForm(): void {
+    this._router.navigate([`addGame/${this.paramId}`]);
   }
   ngOnInit(): void {}
 }
