@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseServiceService } from '../firebase-service.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class AddGameComponent implements OnInit {
   //constructor
   constructor(
     private _fireBaseService: FirebaseServiceService,
-    private _router: Router
+    private _router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   //define a formGroup to getting fields values
@@ -33,5 +34,10 @@ export class AddGameComponent implements OnInit {
       .then(() => this._router.navigate(['']));
   }
 
-  ngOnInit(): void {}
+  //getting the idParam
+  idParam: string = this.activatedRoute.snapshot.params['id'];
+
+  ngOnInit(): void {
+    if (this.idParam) console.log(this.idParam);
+  }
 }
