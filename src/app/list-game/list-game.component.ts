@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentData } from 'firebase/firestore/lite';
+import { FirebaseServiceService } from '../firebase-service.service';
 
 @Component({
   selector: 'app-list-game',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListGameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _firebaseService:FirebaseServiceService) { }
 
   ngOnInit(): void {
+    this._firebaseService.getAllGames().then((dat)=>console.log(dat))
   }
 
 }
