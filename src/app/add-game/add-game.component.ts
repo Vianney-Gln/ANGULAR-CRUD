@@ -37,14 +37,18 @@ export class AddGameComponent implements OnInit {
   //getting the idParam
   public idParam: string = this.activatedRoute.snapshot.params['id'];
 
-  //function calling updateGame from service
+  //function calling updateGame from service and redirect home
   updateGame() {
-    this._fireBaseService.updateGameById(
-      this.idParam,
-      this.gameFormGroup.get('title')?.value,
-      this.gameFormGroup.get('urlImage')?.value,
-      this.gameFormGroup.get('description')?.value
-    );
+    this._fireBaseService
+      .updateGameById(
+        this.idParam,
+        this.gameFormGroup.get('title')?.value,
+        this.gameFormGroup.get('urlImage')?.value,
+        this.gameFormGroup.get('description')?.value
+      )
+      .then(() => {
+        this._router.navigate(['']);
+      });
   }
 
   ngOnInit(): void {
