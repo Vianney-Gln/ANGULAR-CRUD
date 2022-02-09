@@ -35,7 +35,12 @@ export class AddGameComponent implements OnInit {
   }
 
   //getting the idParam
-  idParam: string = this.activatedRoute.snapshot.params['id'];
+  public idParam: string = this.activatedRoute.snapshot.params['id'];
+
+  //function calling updateGame from service
+  updateGame() {
+    console.log('test');
+  }
 
   ngOnInit(): void {
     if (this.idParam) console.log(this.idParam);

@@ -1,4 +1,7 @@
-<h1>Ajouter un jeux</h1>
+<h1 *ngIf="!idParam;else update">Ajouter un jeux</h1>
+<ng-template #update>
+  <h1>Modifier un jeux</h1>
+</ng-template>
 <div class="container-form">
   <form [formGroup]="gameFormGroup">
     <label for="title">
@@ -13,6 +16,7 @@
       description:
       <textarea placeholder="description" type="text" name="description" formControlName="description"></textarea>
     </label>
-    <button (click)="addGame()" type="button">Valider</button>
+    <button *ngIf="!idParam; else buttonUpdate" (click)="addGame()" type="button">Valider</button>
+    <ng-template #buttonUpdate><button (click)="updateGame()" type="button">modifier</button></ng-template>
   </form>
 </div>
