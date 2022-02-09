@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   DocumentData,
   DocumentReference,
@@ -68,11 +69,20 @@ export class FirebaseServiceService {
   }
 
   //function adding a game in db
-  public async addGame(title: string, urlImage: string, description: string) {
+  public async addGame(
+    title: string,
+    urlImage: string,
+    description: string
+  ): Promise<void> {
     await addDoc(collection(this.db, TABLEGAME), {
       title,
       urlImage,
       description,
     });
+  }
+
+  //function deleting a game from db
+  public async deleteGameById(id: string): Promise<void> {
+    await deleteDoc(doc(this.db, TABLEGAME, id));
   }
 }

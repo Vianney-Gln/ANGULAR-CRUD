@@ -2,5 +2,5 @@
   <li class="li-title">{{(oneGame |async)?.['title']}}</li>
   <li class="li-image"><img [src]="(oneGame|async)?.['urlImage']" /></li>
   <li class="li-description">{{(oneGame |async)?.['description']}}</li>
-  <li class="li-buttons"><a>supprimer</a><a>modifier</a></li>
+  <li class="li-buttons"><a (click)="deleteGameById()">supprimer</a><a>modifier</a></li>
 </ul>
