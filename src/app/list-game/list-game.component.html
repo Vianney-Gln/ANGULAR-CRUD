@@ -1,1 +1,3 @@
-<p>list-game works!</p>
+<ul *ngFor="let item of listGames |async">
+  <li>{{item.data["title"]}}</li>
+</ul>

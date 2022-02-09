@@ -11,8 +11,10 @@ export class ListGameComponent implements OnInit {
 
   constructor(private _firebaseService:FirebaseServiceService) { }
 
+  //call service function getAllGames() and stored in listGames;
+  public listGames:Promise<{data: DocumentData;id: string;}[]> = this._firebaseService.getAllGames()
+
   ngOnInit(): void {
-    this._firebaseService.getAllGames().then((dat)=>console.log(dat))
   }
 
 }
