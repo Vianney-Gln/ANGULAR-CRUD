@@ -16,7 +16,8 @@
       description:
       <textarea placeholder="description" type="text" name="description" formControlName="description"></textarea>
     </label>
-    <button *ngIf="!idParam; else buttonUpdate" (click)="addGame()" type="button">Valider</button>
+    <button *ngIf="!idParam; else buttonUpdate" (click)="addGame()" type="button">Valider</button><span
+      *ngIf="MESSAGE_ERROR">{{MESSAGE_ERROR}}</span>
     <ng-template #buttonUpdate><button (click)="updateGame()" type="button">modifier</button></ng-template>
   </form>
 </div>
