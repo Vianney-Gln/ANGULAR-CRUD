@@ -43,6 +43,18 @@ export class AddGameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.idParam) console.log(this.idParam);
+    //if we have a idParam we are on update mode / GET title urlImage description to pre-fill fields and update the formGroup
+    if (this.idParam) {
+      this._fireBaseService.getGameById(this.idParam).then((dat) => {
+        this.gameFormGroup = new FormGroup({
+          title: new FormControl(dat?.['title'], Validators.required),
+          urlImage: new FormControl(dat?.['urlImage'], Validators.required),
+          description: new FormControl(
+            dat?.['description'],
+            Validators.required
+          ),
+        });
+      });
+    }
   }
 }
