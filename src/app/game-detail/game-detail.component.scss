@@ -1,0 +1,43 @@
+.container-game-detail {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding-bottom: 40px;
+
+  .li-title {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  .li-description {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    max-width: 500px;
+  }
+  .li-image {
+    margin-top: 20px;
+    img {
+      width: 500px;
+    }
+  }
+  .li-buttons {
+    margin-top: 20px;
+    width: 500px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    a:hover {
+      color: lightgreen;
+    }
+  }
+}

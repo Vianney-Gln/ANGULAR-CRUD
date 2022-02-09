@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
-import {collection, doc, DocumentData, getDoc, getDocs, getFirestore} from "firebase/firestore/lite";
+import {collection, doc, DocumentData, DocumentReference, DocumentSnapshot, getDoc, getDocs, getFirestore} from "firebase/firestore/lite";
 
 const TABLEGAME:string = "list-video-games";
 
@@ -44,7 +44,9 @@ try {
      //function getting one game by his id
   public async getGameById(id:string) {
 		try {
-        await getDoc(doc(this.db,TABLEGAME,id));
+      const DOC_REF: DocumentReference<DocumentData> = doc(this.db, TABLEGAME, id);
+      const DOC_SNAP: DocumentSnapshot<DocumentData> = await getDoc(DOC_REF);
+      return DOC_SNAP.data();
 
     	}catch {
         throw new Error;
