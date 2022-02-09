@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import {
+  addDoc,
   collection,
   doc,
   DocumentData,
@@ -64,5 +65,14 @@ export class FirebaseServiceService {
     } catch {
       throw new Error();
     }
+  }
+
+  //function adding a game in db
+  public async addGame(title: string, urlImage: string, description: string) {
+    await addDoc(collection(this.db, TABLEGAME), {
+      title,
+      urlImage,
+      description,
+    });
   }
 }
