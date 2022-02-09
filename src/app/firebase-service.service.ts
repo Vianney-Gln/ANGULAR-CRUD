@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore/lite";
+import {collection, DocumentData, getDocs, getFirestore} from "firebase/firestore/lite";
+
+const TABLEGAME:string = "list-video-games";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,16 @@ export class FirebaseServiceService {
   app = initializeApp(this._firebaseConfig);
   db = getFirestore(this.app);
 
+  //function getting all games from db
+  public async getAllGames():Promise<{data: DocumentData;id: string;}[]>{
+    const GAME_COLLECTION = collection(this.db,TABLEGAME);
+    const GAME_SNAPSHOT = await getDocs(GAME_COLLECTION);
+    return GAME_SNAPSHOT.docs.map((doc)=>{
+      return {
+        data:doc.data(),
+        id:doc.id
+      }
+    })
+  }
   constructor() { }
 }
