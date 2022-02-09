@@ -11,6 +11,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  setDoc,
 } from 'firebase/firestore/lite';
 
 const TABLEGAME: string = 'list-video-games';
@@ -80,9 +81,18 @@ export class FirebaseServiceService {
       description,
     });
   }
-
   //function deleting a game from db
   public async deleteGameById(id: string): Promise<void> {
     await deleteDoc(doc(this.db, TABLEGAME, id));
+  }
+
+  //function updating a game
+  public async updateGameById(
+    id: string,
+    title: string,
+    urlImage: string,
+    description: string
+  ): Promise<void> {
+    await setDoc(doc(this.db, TABLEGAME, id), { title, urlImage, description });
   }
 }
