@@ -1,0 +1,23 @@
+<h1 *ngIf="!idParam;else update">Ajouter un jeux</h1>
+<ng-template #update>
+  <h1>Modifier un jeux</h1>
+</ng-template>
+<div class="container-form">
+  <form [formGroup]="gameFormGroup">
+    <label for="title">
+      title:
+      <input placeholder="title" type="text" name="title" formControlName="title" />
+    </label>
+    <label for="urlImage">
+      urlImage:
+      <input placeholder="urlImage" type="text" name="urlImage" formControlName="urlImage" />
+    </label>
+    <label for="description">
+      description:
+      <textarea placeholder="description" type="text" name="description" formControlName="description"></textarea>
+    </label>
+    <button *ngIf="!idParam; else buttonUpdate" (click)="addGame()" type="button">Valider</button><span
+      *ngIf="MESSAGE_ERROR">{{MESSAGE_ERROR}}</span>
+    <ng-template #buttonUpdate><button (click)="updateGame()" type="button">modifier</button></ng-template>
+  </form>
+</div>
