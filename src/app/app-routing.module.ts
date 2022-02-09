@@ -5,13 +5,13 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
 import { ListGameComponent } from './list-game/list-game.component';
 
 const routes: Routes = [
-  {path: '', component: ListGameComponent},
-  {path: 'addGame', component: AddGameComponent},
-  {path: 'gameDetail/:id', component: GameDetailComponent}
+  { path: '', component: ListGameComponent },
+  { path: 'addGame', component: AddGameComponent },
+  { path: 'gameDetail/:id', component: GameDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
